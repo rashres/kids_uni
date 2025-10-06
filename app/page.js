@@ -151,18 +151,9 @@ function NavBar() {
     >
       {/* Top row */}
       <div className="max-w-[1280px] mx-auto px-4 lg:px-6 h-[68px] flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <div className="h-9 w-9 rounded-md bg-[#2E5E73] grid place-items-center">
-            <svg viewBox="0 0 24 24" className="h-5 w-5 text-white">
-              <path fill="currentColor" d="M5 4h6.5A8.5 8.5 0 0 1 20 12.5 8.5 8.5 0 0 1 11.5 21H5V4z" />
-            </svg>
-          </div>
-          <span className="text-[26px] font-semibold ">
-            <span className="text-[#2E5E73]">Kids</span>
-            <span> </span>
-            <span className="text-[#1E4762]">University</span>
-          </span>
-        </Link>
+        <div>
+
+        </div>
 
         <nav className="hidden md:flex items-center gap-6 text-[14px] text-[#1E4762]">
           {utilLinks.map((l) => (
@@ -175,7 +166,19 @@ function NavBar() {
 
       {/* Bottom row */}
       <div >
-        <nav className="max-w-[1280px] mx-auto px-4 lg:px-6 flex justify-end">
+        <nav className="max-w-[1280px] mx-auto px-4 lg:px-6 flex justify-between">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="h-9 w-9 rounded-md bg-[#2E5E73] grid place-items-center">
+              <svg viewBox="0 0 24 24" className="h-5 w-5 text-white">
+                <path fill="currentColor" d="M5 4h6.5A8.5 8.5 0 0 1 20 12.5 8.5 8.5 0 0 1 11.5 21H5V4z" />
+              </svg>
+            </div>
+            <span className="text-[26px] font-semibold ">
+              <span className="text-[#2E5E73]">Kids</span>
+              <span> </span>
+              <span className="text-[#1E4762]">University</span>
+            </span>
+          </Link>
           <ul className="hidden md:flex items-center justify-center gap-10 h-[56px] text-[18px] font-bold  text-[#2E5E73]">
             {mainLinks.map((l) => (
               <li key={l.label}>

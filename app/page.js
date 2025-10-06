@@ -1,8 +1,11 @@
+"use client"
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   return (
     <main className="max-w-[3840px] mx-auto w-full ">
+      <NavBar />
       <HeroSection />
 
       <ProgramsSection />
@@ -97,5 +100,88 @@ function ProgramsSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+
+
+
+function NavBar() {
+  const [hidden, setHidden] = useState(false);
+  const [elevated, setElevated] = useState(false);
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      setElevated(y > 8);
+
+      if (y > lastY.current && y > 120) setHidden(true);
+      else setHidden(false);
+
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const utilLinks = [
+    { href: "#", label: "MyTDF Login" },
+    { href: "#", label: "Open a Fund" },
+    { href: "#", label: "Give to a Fund" },
+    { href: "#", label: "Apply for a Grant" },
+  ];
+  const mainLinks = [
+    { href: "#", label: "Who We Serve" },
+    { href: "#", label: "What We Do" },
+    { href: "#", label: "Our Impact" },
+    { href: "#", label: "About Us" },
+    { href: "#", label: "Connect" },
+  ];
+
+  return (
+    <header
+      className={[
+        "fixed top-0 left-0 right-0 z-50 bg-white transition-transform duration-300",
+        hidden ? "-translate-y-full" : "translate-y-0",
+        elevated ? "shadow-sm" : "shadow-none",
+      ].join(" ")}
+    >
+      <div className="max-w-[1280px] mx-auto px-4 lg:px-6 h-[68px] flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="h-9 w-9 rounded-md bg-[#2E5E73] grid place-items-center">
+            <svg viewBox="0 0 24 24" className="h-5 w-5 text-white">
+              <path fill="currentColor" d="M5 4h6.5A8.5 8.5 0 0 1 20 12.5 8.5 8.5 0 0 1 11.5 21H5V4z" />
+            </svg>
+          </div>
+          <span className="text-[26px] font-semibold tracking-tight">
+            <span className="text-[#2E5E73]">Kids</span>
+            <span className="text-[#1E4762]">University</span>
+          </span>
+        </Link>
+
+        <nav className="hidden md:flex items-center gap-6 text-[14px] text-[#1E4762]">
+          {utilLinks.map((l) => (
+            <Link key={l.label} href={l.href} className="hover:underline underline-offset-4">
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      <div className="border-t border-gray-200">
+        <nav className="max-w-[1280px] mx-auto px-4 lg:px-6">
+          <ul className="hidden md:flex items-center justify-center gap-10 h-[56px] text-[18px] font-medium text-[#1E4762]">
+            {mainLinks.map((l) => (
+              <li key={l.label}>
+                <Link href={l.href} className="hover:text-[#2E5E73] transition-colors">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }

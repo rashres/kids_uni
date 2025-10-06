@@ -1,13 +1,13 @@
 "use client"
 import Link from "next/link";
-import { useState,useRef,useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 
 export default function Home() {
   return (
     <main className="max-w-[3840px] mx-auto w-full ">
       <NavBar />
-       <div className="h-[126px]" />
+      <div className="h-[126px]" />
       <HeroSection />
 
       <ProgramsSection />
@@ -157,10 +157,10 @@ function NavBar() {
               <path fill="currentColor" d="M5 4h6.5A8.5 8.5 0 0 1 20 12.5 8.5 8.5 0 0 1 11.5 21H5V4z" />
             </svg>
           </div>
-          <span className="text-[26px] font-semibold tracking-tight">
-            <span className="text-[#2E5E73]">The</span>
-            <span className="text-[#1E4762]">Dallas</span>
-            <span className="text-[#2E5E73]">Foundation</span>
+          <span className="text-[26px] font-semibold ">
+            <span className="text-[#2E5E73]">Kids</span>
+            <span> </span>
+            <span className="text-[#1E4762]">University</span>
           </span>
         </Link>
 
@@ -174,12 +174,12 @@ function NavBar() {
       </div>
 
       {/* Bottom row */}
-      <div className="border-t border-gray-200">
-        <nav className="max-w-[1280px] mx-auto px-4 lg:px-6">
-          <ul className="hidden md:flex items-center justify-center gap-10 h-[56px] text-[18px] font-medium text-[#1E4762]">
+      <div >
+        <nav className="max-w-[1280px] mx-auto px-4 lg:px-6 flex justify-end">
+          <ul className="hidden md:flex items-center justify-center gap-10 h-[56px] text-[18px] font-bold  text-[#2E5E73]">
             {mainLinks.map((l) => (
               <li key={l.label}>
-                <Link href={l.href} className="hover:text-[#2E5E73] transition-colors">
+                <Link href={l.href} className=" ">
                   {l.label}
                 </Link>
               </li>

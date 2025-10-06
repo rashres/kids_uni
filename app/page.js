@@ -1,11 +1,13 @@
 "use client"
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useState,useRef,useEffect } from "react";
+
 
 export default function Home() {
   return (
     <main className="max-w-[3840px] mx-auto w-full ">
       <NavBar />
+       <div className="h-[126px]" />
       <HeroSection />
 
       <ProgramsSection />
@@ -105,7 +107,6 @@ function ProgramsSection() {
 
 
 
-
 function NavBar() {
   const [hidden, setHidden] = useState(false);
   const [elevated, setElevated] = useState(false);
@@ -116,6 +117,7 @@ function NavBar() {
       const y = window.scrollY || 0;
       setElevated(y > 8);
 
+      // hide when scrolling down, show when scrolling up
       if (y > lastY.current && y > 120) setHidden(true);
       else setHidden(false);
 
@@ -147,6 +149,7 @@ function NavBar() {
         elevated ? "shadow-sm" : "shadow-none",
       ].join(" ")}
     >
+      {/* Top row */}
       <div className="max-w-[1280px] mx-auto px-4 lg:px-6 h-[68px] flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
           <div className="h-9 w-9 rounded-md bg-[#2E5E73] grid place-items-center">
@@ -155,8 +158,9 @@ function NavBar() {
             </svg>
           </div>
           <span className="text-[26px] font-semibold tracking-tight">
-            <span className="text-[#2E5E73]">Kids</span>
-            <span className="text-[#1E4762]">University</span>
+            <span className="text-[#2E5E73]">The</span>
+            <span className="text-[#1E4762]">Dallas</span>
+            <span className="text-[#2E5E73]">Foundation</span>
           </span>
         </Link>
 
@@ -169,6 +173,7 @@ function NavBar() {
         </nav>
       </div>
 
+      {/* Bottom row */}
       <div className="border-t border-gray-200">
         <nav className="max-w-[1280px] mx-auto px-4 lg:px-6">
           <ul className="hidden md:flex items-center justify-center gap-10 h-[56px] text-[18px] font-medium text-[#1E4762]">
